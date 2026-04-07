@@ -18,7 +18,7 @@
 
 .article-card-image-container {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   flex-shrink: 0;

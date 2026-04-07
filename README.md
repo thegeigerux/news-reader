@@ -17,12 +17,11 @@ News Reader is a full-stack portfolio application that demonstrates modern web d
 
 ## Features
 
-- **Curated News Feed**: 3 stories per page for a focused reading experience
+- **Curated News Feed**: 3 stories displayed for a focused reading experience
 - **Category Filtering**: Browse by General, Business, Technology, Health, Sports, or Entertainment
 - **Search**: Find articles by keyword across all categories
 - **Bookmarks**: Save articles for later reading
 - **Article Modal**: Clean reading experience with external link to full article
-- **Pagination**: Navigate through pages of results
 - **Dark Mode Toggle**: Switch between light and dark themes
 - **Skeleton Loading**: Smooth loading states while fetching data
 - **Error Handling**: Graceful error states with retry functionality
@@ -31,6 +30,7 @@ News Reader is a full-stack portfolio application that demonstrates modern web d
 ## Tech Stack
 
 ### Frontend
+
 - **React 18** - UI library with functional components and hooks
 - **Vite** - Fast development server and optimized builds
 - **CSS Modules** - Component-scoped styling with CSS custom properties
@@ -38,6 +38,7 @@ News Reader is a full-stack portfolio application that demonstrates modern web d
 - **LocalStorage API** - Client-side persistence for bookmarks and preferences
 
 ### Backend
+
 - **Node.js** - JavaScript runtime
 - **Express** - Web framework for API routes
 - **Axios** - HTTP client for external API calls
@@ -46,6 +47,7 @@ News Reader is a full-stack portfolio application that demonstrates modern web d
 - **dotenv** - Environment variable management
 
 ### External API
+
 - **TheNewsAPI** - News aggregation service (https://www.thenewsapi.com/)
 
 ## Project Structure
@@ -74,12 +76,44 @@ news-reader/
 │   ├── index.html
 │   ├── vite.config.js
 │   └── package.json
+├── vercel.json                 # Vercel deployment configuration
+├── package.json                # Root package for monorepo builds
 └── README.md
 ```
 
-## Setup Instructions
+## Deployment
+
+### Vercel (Recommended)
+
+This project is configured for full-stack deployment on Vercel with the backend API and frontend served from the same domain.
+
+1. Push your code to GitHub
+2. Import the repository in [Vercel](https://vercel.com)
+3. Add the `NEWS_API_KEY` environment variable in Project Settings
+4. Deploy
+
+The `vercel.json` configuration handles:
+
+- Building the Express backend as a serverless function
+- Building the React frontend with Vite
+- Routing `/api/*` requests to the backend
+- Serving static assets and SPA fallback
+
+### Manual Deployment
+
+Build the frontend for production:
+
+```bash
+cd frontend
+npm run build
+```
+
+The built files will be in `frontend/dist/`.
+
+## Local Development
 
 ### Prerequisites
+
 - Node.js 18+ and npm
 - A free API key from [TheNewsAPI](https://www.thenewsapi.com/)
 
@@ -123,6 +157,7 @@ npm run dev
 ```
 
 The application will be available at:
+
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:3001
 
@@ -130,23 +165,22 @@ The application will be available at:
 
 The backend provides these endpoints:
 
-| Method | Route | Description |
-|--------|-------|-------------|
-| GET | `/api/health` | Health check endpoint |
-| GET | `/api/news/top` | Get top news stories |
-| GET | `/api/news/category/:category` | Get news by category |
-| GET | `/api/news/search?q=query` | Search news by keyword |
+| Method | Route                          | Description            |
+| ------ | ------------------------------ | ---------------------- |
+| GET    | `/api/health`                  | Health check endpoint  |
+| GET    | `/api/news/top`                | Get top news stories   |
+| GET    | `/api/news/category/:category` | Get news by category   |
+| GET    | `/api/news/search?q=query`     | Search news by keyword |
 
 All routes return:
+
 ```json
 {
   "success": true,
   "data": [...],      // Array of normalized articles
   "meta": {
     "found": 100,     // Total articles available
-    "returned": 3,    // Articles in this response
-    "limit": 3,       // Max articles per request
-    "page": 1         // Current page
+    "returned": 3     // Articles in this response
   }
 }
 ```
@@ -156,6 +190,7 @@ All routes return:
 **Important**: TheNewsAPI key is stored only in the backend `.env` file and is never exposed to the client. All third-party API requests flow through the Express proxy server, keeping credentials secure.
 
 ### Security Architecture
+
 ```
 ┌─────────────┐     ┌─────────────────┐     ┌──────────────┐
 │   Browser   │────▶│  Express Proxy  │────▶│  TheNewsAPI  │
@@ -166,6 +201,7 @@ All routes return:
 ## Design System
 
 ### Colors
+
 - **Background**: #F7F5F1 (warm off-white)
 - **Surface**: #FFFFFF (cards)
 - **Primary Text**: #161616 (near-black)
@@ -173,10 +209,12 @@ All routes return:
 - **Accent**: #1D4ED8 (calm blue)
 
 ### Typography
+
 - **UI Text**: Inter (weights: 400, 500, 600, 700)
 - **Headlines**: Newsreader (weights: 400, 500, 600)
 
 ### Spacing
+
 - Based on 4px grid (0.25rem increments)
 - Container max-width: 1200px
 - Responsive padding: 16px → 24px → 32px

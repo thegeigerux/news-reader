@@ -53,6 +53,7 @@
   display: grid;
   gap: var(--space-6);
   margin-bottom: var(--space-10);
+  align-items: start;
 }
 
 @media (min-width: 1024px) {

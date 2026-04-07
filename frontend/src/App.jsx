@@ -262,7 +262,6 @@ function App() {
                           <ArticleCard
                             key={article.uuid}
                             article={article}
-                            variant="compact"
                             onClick={() => handleArticleClick(article)}
                             isBookmarked={isBookmarked(article.uuid)}
                             onToggleBookmark={() =>
@@ -274,15 +273,6 @@ function App() {
                       </div>
                     )}
                   </div>
-
-                  <PaginationControls
-                    currentPage={currentPage}
-                    totalPages={Math.min(totalPages, 20)} // Cap at 20 for UX
-                    onPageChange={handlePageChange}
-                    hasMore={
-                      articles.length === 3 && meta.found > currentPage * 3
-                    }
-                  />
                 </>
               )}
             </>
