@@ -292,6 +292,9 @@ function App() {
       <footer className="footer">
         <div className="container">
           <p className="footer-text">News Reader - Stay informed, stay calm</p>
+          <p className="footer-made">
+            Made with <span className="heart-green">♡</span> © James Geiger 2026
+          </p>
           <p className="footer-credit">
             Data provided by{" "}
             <a
