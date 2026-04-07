@@ -4,12 +4,11 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(12px);
-  background-color: rgba(var(--color-surface), 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .dark .header {
-  background-color: rgba(26, 26, 26, 0.9);
+  background-color: #1a1a1a;
 }
 
 .header-content {
@@ -175,6 +174,7 @@
   display: none;
   padding: var(--space-4) 0;
   border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
 }
 
 .mobile-menu.open {
@@ -194,7 +194,7 @@
   padding: var(--space-3) var(--space-4);
   font-size: 1rem;
   font-weight: 500;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   background: none;
   border: none;
   border-radius: var(--radius-md);
@@ -204,7 +204,6 @@
 }
 
 .mobile-nav-link:hover {
-  color: var(--color-text-primary);
   background-color: var(--color-surface-hover);
 }
 
